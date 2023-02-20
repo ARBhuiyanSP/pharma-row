@@ -1,0 +1,23 @@
+body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header{
+	margin-left: 230px;
+}
+.nav-link{
+	display: block;
+    padding: 0.2rem 1rem;
+	border-bottom: 1px solid #454D55;
+}
+.layout-navbar-fixed .wrapper .main-sidebar:hover .brand-link{
+	width: 230px;
+}
+.layout-navbar-fixed .wrapper .brand-link {
+	width: 230px;
+}
+.main-sidebar, .main-sidebar::before{
+	width: 230px;
+}
+.sidebar-mini .main-sidebar .nav-link, .sidebar-mini-md .main-sidebar .nav-link, .sidebar-mini-xs .main-sidebar .nav-link{
+	width: calc(230px - .5rem * 2);
+}
+p{
+	font-size: 14px !important;
+}
