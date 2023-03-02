@@ -23,14 +23,14 @@ else{
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="supplier_info.php">Supplier List</a>
+            <a href="supplier_info.php">Category List</a>
         </li>
-        <li class="breadcrumb-item active"> Suppliers Information</li>
+        <li class="breadcrumb-item active"> Category Information</li>
     </ol>
     <!-- DataTables Example -->
     <div class="card mb-3">
         <div class="card-header">
-            <i class="fas fa-table"></i> Suppliers Information Form
+            <i class="fas fa-table"></i> Category Information Form
 		</div>
         <div class="card-body">
             <!--here your code will go-->

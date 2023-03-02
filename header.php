@@ -25,6 +25,7 @@ include 'includes/suppliers_process.php';
 include 'includes/format_process.php';
 include 'includes/return_process.php';
 include 'includes/payment_process.php';
+include 'includes/product_process.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,6 @@ include 'includes/payment_process.php';
   <!-- Custom fonts for this template-->
   <link href="css/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
-  <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="css/sweetalert.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
@@ -49,6 +49,7 @@ include 'includes/payment_process.php';
   <link href="css/select2.min.css" rel="stylesheet">
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/select2.min.js"></script>
+  <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <style>
 /* body {
@@ -75,7 +76,10 @@ include 'includes/payment_process.php';
 .table th, .table td{
 	padding:5px;
 }
-
+.select2-container--default .select2-selection--single{
+	height:28px;
+	padding:1px 5px !important;
+}
 
 </style>
 <body id="page-top">

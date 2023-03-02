@@ -277,26 +277,6 @@ function get_product_with_category() {
     return $final_array;
 }
 
-function get_allproduct_with_category() {
-    $final_array = [];
-    global $conn;
-    $msql           = "SELECT * FROM `inv_product` order by `product_name` asc";
-                    $mresult = $conn->query($msql);
-                    if ($mresult->num_rows > 0) {
-                        while ($material    = $mresult->fetch_object()) {
-                        //$product_name	=>  $material->product_name;
-						   $final_array[]  = [
-                                'id'                    => $material->id,
-                                'type_id'        => $material->type_id,
-                                'brand_id'           => $material->brand_id,
-                                'cat_id'             => $material->cat_id,
-                                'product_name'         => $material->product_name.' ('.$product_name.')',
-                            ];
-                        }
-                    }
-    return $final_array;
-}
-
 function isDuplicateData($table, $where, $notWhere=''){
     global $conn;
     $sql='';

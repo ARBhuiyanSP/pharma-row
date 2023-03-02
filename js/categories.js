@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var brand_id;
+	var cat_id;
 	
 	DisplayData();
 	
@@ -10,16 +10,19 @@ $(document).ready(function(){
 			alert("Hello World");
 		}else{
 			var name = $('#name').val();
+			var parentcat = $('#parentcat').val();
 			
 			$.ajax({
-				url: 'includes/brand_process.php',
+				url: 'includes/cat_process.php',
 				type: 'POST',
 				data: {
 					saved: 1,
-					name: name
+					name: name,
+					parentcat: parentcat
 				},
 				success: function(data){
 					 $('#name').val('');
+					 $('#parentcat').val('');
 					 DisplayData();
 				}
 			});
@@ -29,7 +32,7 @@ $(document).ready(function(){
 	
 	function DisplayData(){
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/cat_process.php',
 			type: 'POST',
 			data: {
 				show: 1
@@ -45,7 +48,7 @@ $(document).ready(function(){
 		if(confirm('Are you sure to remove this record ?'))
         {
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/cat_process.php',
 			type: 'POST',
 			data: {
 				deleted: 1,
@@ -57,6 +60,7 @@ $(document).ready(function(){
 				$('#update').hide();
 				$('#save').show();	
 				$('#name').val('');
+				$('#parentcat').val('');
 			}
 		});
 		}
@@ -71,7 +75,7 @@ $(document).ready(function(){
 		var id = $(this).attr('name');
 		
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/cat_process.php',
 			type: 'POST',
 			data: {
 				id: id
@@ -79,9 +83,10 @@ $(document).ready(function(){
 			success: function(response){
 				var getArray = jQuery.parseJSON(response);
 				
-				brand_id = getArray.id;
+				cat_id = getArray.id;
 				
 				$('#name').val(getArray.name);
+				$('#parentcat').val(getArray.parentcat);
 				
 				$('#update').show();
 				$('#save').hide();	
@@ -91,19 +96,22 @@ $(document).ready(function(){
 	
 	$('#update').on('click', function(){
 		var name = $('#name').val();
+		var parentcat = $('#parentcat').val();
 		
 		
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/cat_process.php',
 			type: 'POST',
 			data: {
 				updated: 1,
-				id: brand_id,
-				name: name
+				id: cat_id,
+				name: name,
+				parentcat: parentcat
 			},
 			success: function(){
 				DisplayData();
 				$('#name').val('');
+				$('#parentcat').val('');
 				
 				alert("Successfully Updated!");
 				

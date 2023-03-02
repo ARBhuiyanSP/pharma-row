@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var brand_id;
+	var type_id;
 	
 	DisplayData();
 	
@@ -12,7 +12,7 @@ $(document).ready(function(){
 			var name = $('#name').val();
 			
 			$.ajax({
-				url: 'includes/brand_process.php',
+				url: 'includes/type_process.php',
 				type: 'POST',
 				data: {
 					saved: 1,
@@ -29,7 +29,7 @@ $(document).ready(function(){
 	
 	function DisplayData(){
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/type_process.php',
 			type: 'POST',
 			data: {
 				show: 1
@@ -45,7 +45,7 @@ $(document).ready(function(){
 		if(confirm('Are you sure to remove this record ?'))
         {
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/type_process.php',
 			type: 'POST',
 			data: {
 				deleted: 1,
@@ -71,7 +71,7 @@ $(document).ready(function(){
 		var id = $(this).attr('name');
 		
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/type_process.php',
 			type: 'POST',
 			data: {
 				id: id
@@ -79,7 +79,7 @@ $(document).ready(function(){
 			success: function(response){
 				var getArray = jQuery.parseJSON(response);
 				
-				brand_id = getArray.id;
+				type_id = getArray.id;
 				
 				$('#name').val(getArray.name);
 				
@@ -94,11 +94,11 @@ $(document).ready(function(){
 		
 		
 		$.ajax({
-			url: 'includes/brand_process.php',
+			url: 'includes/type_process.php',
 			type: 'POST',
 			data: {
 				updated: 1,
-				id: brand_id,
+				id: type_id,
 				name: name
 			},
 			success: function(){

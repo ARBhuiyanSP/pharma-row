@@ -63,9 +63,25 @@
                 <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
                 <span class="sub_menu_text_design"> Units</span>
             </a>
+            <a class="dropdown-item" href="type.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Types</span>
+            </a>
+            <a class="dropdown-item" href="categories.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Categories</span>
+            </a>
+            <a class="dropdown-item" href="brands.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Brands</span>
+            </a>
             <a class="dropdown-item" href="supplier_entry.php">
                 <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
                 <span class="sub_menu_text_design"> Suppliers</span>
+            </a>
+            <a class="dropdown-item" href="products.php">
+                <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>
+                <span class="sub_menu_text_design"> Products</span>
             </a>
 			<!-- <a class="dropdown-item" href="supplier_info.php">
                 <i class="fa fa-bullseye" aria-hidden="true" style="color: #007BFF;"></i>

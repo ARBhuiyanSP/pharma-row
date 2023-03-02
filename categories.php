@@ -1,5 +1,4 @@
 <?php include 'header.php' ?>
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <style>
 
 </style>
@@ -15,7 +14,7 @@
     <div class="card mb-3">
         <div class="card-header">
             <i class="fas fa-table"></i>
-            Brands</div>
+            Category Setup</div>
         <div class="card-body">
 			<div class="row">
 				<div class="col-md-4">
@@ -23,8 +22,22 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label>Brand Name</label>
+									<label>Category Name</label>
 									<input type="text" id="name" class="form-control"/>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Parent Category</label>
+									<select id="parentcat" class="form-control">
+										<option></option>
+										<?php 
+											$query = $conn->query("SELECT * FROM `categories`");
+											while($fetch = $query->fetch_array()){
+										?>
+										<option value="<?php echo $fetch['name'] ?>"><?php echo $fetch['parentcat'] ?> - <?php echo $fetch['name'] ?></option>
+											<?php } ?>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -35,7 +48,8 @@
 				<table id="example" class="table table-bordered">
 					<thead>
 						<tr>
-							<th>Name</th>
+							<th>Category Name</th>
+							<th>Parent Category</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -45,12 +59,12 @@
 			</div>
         </div>
     </div>
-</div>
-<!-- /.container-fluid -->
-<?php include 'footer.php' ?>
-<script>
+</div><script>
 $(document).ready(function() {
     $('#example').DataTable();
 } );
 </script>
-<script src="js/brands.js"></script>
+<!-- /.container-fluid -->
+<?php include 'footer.php' ?>
+
+<script src="js/categories.js"></script>

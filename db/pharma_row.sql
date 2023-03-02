@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2023 at 09:31 AM
+-- Generation Time: Mar 02, 2023 at 12:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -159,10 +159,19 @@ CREATE TABLE `branch` (
 
 CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL
+  `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `name`) VALUES
+(18, 'Square Pharma'),
+(19, 'Incepta Pharma'),
+(20, 'Beximco Pharma'),
+(21, 'Opsonin Pharma'),
+(22, 'Renata Limited');
 
 -- --------------------------------------------------------
 
@@ -178,6 +187,29 @@ CREATE TABLE `buildings` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `parentcat` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `parentcat`) VALUES
+(8, 'Tablets', ''),
+(9, 'Syrap', ''),
+(10, 'Peracitamol', 'Tablets'),
+(11, 'Peracitamol', 'Syrap'),
+(12, 'test 3', 'Peracitamol');
 
 -- --------------------------------------------------------
 
@@ -3760,6 +3792,43 @@ CREATE TABLE `inv_particulars_type` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `inv_product`
+--
+
+CREATE TABLE `inv_product` (
+  `id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  `cat_id` int(11) NOT NULL,
+  `product_name` varchar(50) NOT NULL,
+  `alert_qty` int(11) NOT NULL,
+  `rak_no` varchar(20) NOT NULL,
+  `packing_mode` varchar(50) NOT NULL,
+  `box_pics` int(11) NOT NULL,
+  `free_per_box` int(11) NOT NULL,
+  `free_pics` int(11) NOT NULL,
+  `buy_price` float NOT NULL,
+  `sale_price` float NOT NULL,
+  `pics_sale` float NOT NULL,
+  `price_date` varchar(15) NOT NULL,
+  `barcode` varchar(100) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_by` varchar(20) NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `inv_product`
+--
+
+INSERT INTO `inv_product` (`id`, `type_id`, `brand_id`, `cat_id`, `product_name`, `alert_qty`, `rak_no`, `packing_mode`, `box_pics`, `free_per_box`, `free_pics`, `buy_price`, `sale_price`, `pics_sale`, `price_date`, `barcode`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(6, 6, 18, 9, 'asdfds', 23432, '234', 'Carton', 24323, 0, 0, 1243, 5674, 0.23, '10/03/1991', '', 1, '2023-03-02 09:59:41', '', NULL, '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `inv_purchase`
 --
 
@@ -3997,7 +4066,9 @@ CREATE TABLE `inv_supplierbalance` (
 --
 
 INSERT INTO `inv_supplierbalance` (`id`, `sb_ref_id`, `warehouse_id`, `sb_date`, `sb_supplier_id`, `sb_dr_amount`, `sb_cr_amount`, `sb_remark`, `sb_partac_id`, `approval_status`) VALUES
-(3381, 'OP', '', '2023-02-20', 'SID-001', 0, 0, 'Opening balance', 'OP', 0);
+(3381, 'OP', '', '2023-02-20', 'SID-001', 0, 0, 'Opening balance', 'OP', 0),
+(3382, 'OP', '', '2023-02-22', 'SID-002', 0, 2343, 'Opening balance', 'OP', 0),
+(3383, 'OP', '', '2023-02-22', 'SID-002', 0, 2343, 'Opening balance', 'OP', 0);
 
 -- --------------------------------------------------------
 
@@ -4875,7 +4946,9 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `code`, `name`, `address`, `contact_person`, `supplier_phone`, `supplier_op_balance`, `supplier_type`, `material_type`) VALUES
-(210, 'SID-001', 'No Supplier', '-', '-', '-', '0', 'cash', '44');
+(210, 'SID-001', 'No Supplier', '-', '-', '-', '0', 'cash', '44'),
+(211, 'SID-002', 'Test', 'asef', 'asdf', '324534', '2343', 'cash', '45'),
+(212, 'SID-002', 'Testrtrtrtrt', 'asef', 'asdf', '324534', '2343', 'cash', '46');
 
 -- --------------------------------------------------------
 
@@ -4972,6 +5045,46 @@ CREATE TABLE `temp_product_receive_data` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tv_users`
+--
+
+CREATE TABLE `tv_users` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact_no` varchar(50) NOT NULL,
+  `role` varchar(10) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` varchar(10) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_at` varchar(10) NOT NULL,
+  `updated_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `types`
+--
+
+CREATE TABLE `types` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `types`
+--
+
+INSERT INTO `types` (`id`, `name`) VALUES
+(6, 'Medicine '),
+(9, 'Beauty Product');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -5064,6 +5177,12 @@ ALTER TABLE `brands`
 -- Indexes for table `buildings`
 --
 ALTER TABLE `buildings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5191,6 +5310,12 @@ ALTER TABLE `inv_particulars`
 -- Indexes for table `inv_particulars_type`
 --
 ALTER TABLE `inv_particulars_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inv_product`
+--
+ALTER TABLE `inv_product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5396,6 +5521,12 @@ ALTER TABLE `tb_ledger`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `types`
+--
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -5421,13 +5552,19 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `buildings`
 --
 ALTER TABLE `buildings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2101;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `complain_type`
@@ -5556,6 +5693,12 @@ ALTER TABLE `inv_particulars_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `inv_product`
+--
+ALTER TABLE `inv_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `inv_purchase`
 --
 ALTER TABLE `inv_purchase`
@@ -5607,7 +5750,7 @@ ALTER TABLE `inv_supplier`
 -- AUTO_INCREMENT for table `inv_supplierbalance`
 --
 ALTER TABLE `inv_supplierbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3382;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3384;
 
 --
 -- AUTO_INCREMENT for table `inv_technicianinfo`
@@ -5661,7 +5804,7 @@ ALTER TABLE `materialbalance`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `mem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `mem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -5727,7 +5870,7 @@ ALTER TABLE `sttable`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 
 --
 -- AUTO_INCREMENT for table `supplier_payment`
@@ -5751,6 +5894,12 @@ ALTER TABLE `tb_billpayment`
 -- AUTO_INCREMENT for table `tb_ledger`
 --
 ALTER TABLE `tb_ledger`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `types`
+--
+ALTER TABLE `types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
